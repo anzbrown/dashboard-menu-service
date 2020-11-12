@@ -7,9 +7,6 @@ export const app = () => {
     const expressApi = express();
     const baseApiRoute = '/api';
 
-    // Static client resources
-    // expressApi.use(express.static(path.join(__dirname, '..', 'client')));
-
     // Middleware
     expressApi.use(express.json());
     expressApi.use(errorMiddleware);

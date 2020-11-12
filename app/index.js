@@ -11,9 +11,9 @@ const server = application.listen(port, async () => {
 // graceful shutdown handler
 process.on('SIGTERM', async () => {
     logger.error('SIGTERM signal received.');
-    logger.error('Closing http app.');
+    logger.error('Closing http server.');
     server.close(async () => {
-        logger.info('Http app closed.');
+        logger.info('Http server closed.');
         process.exit(0);
     });
 });
