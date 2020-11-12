@@ -2,12 +2,12 @@
   "name": "ts-dash",
   "version": "1.0.0",
   "description": "Express API with GCP Firebase and static HTML front end",
-  "main": "server/index.js",
+  "main": "app/index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint --fix .",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node server/index.js",
-    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node server/index.js",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node app/index.js",
+    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app/index.js",
     "docker-build": "docker build -t docker-registry-v2.ncredinburgh.com/adambrown/dashboard:1.0-SNAPSHOT .",
     "docker-push": "docker push docker-registry-v2.ncredinburgh.com/adambrown/dashboard"
   },
