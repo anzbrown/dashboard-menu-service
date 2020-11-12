@@ -1,0 +1,37 @@
+{
+  "name": "ts-dash",
+  "version": "1.0.0",
+  "description": "Express API with GCP Firebase and static HTML front end",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node server/index.js",
+    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node server/index.js",
+    "docker-build": "docker build -t docker-registry-v2.ncredinburgh.com/adambrown/dashboard:1.0-SNAPSHOT .",
+    "docker-push": "docker push docker-registry-v2.ncredinburgh.com/adambrown/dashboard"
+  },
+  "author": "Adam Brown",
+  "license": "",
+  "dependencies": {
+    "@google-cloud/firestore": "^4.2.0",
+    "@google-cloud/logging-winston": "^4.0.0",
+    "envalid": "^6.0.1",
+    "express": "^4.17.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
+    "prettier": "^2.1.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  }
+}
