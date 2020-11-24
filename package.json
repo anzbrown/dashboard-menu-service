@@ -7,9 +7,7 @@
   "scripts": {
     "lint": "eslint --fix .",
     "start": "node --experimental-modules --es-module-specifier-resolution=node app/index.js",
-    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app/index.js",
-    "docker-build": "docker build -t docker-registry-v2.ncredinburgh.com/adambrown/dashboard:1.0-SNAPSHOT .",
-    "docker-push": "docker push docker-registry-v2.ncredinburgh.com/adambrown/dashboard"
+    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app/index.js"
   },
   "author": "Adam Brown",
   "license": "",
