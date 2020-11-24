@@ -1,7 +1,7 @@
 {
   "name": "ts-dash",
   "version": "1.0.0",
-  "description": "Express API with GCP Firebase and static HTML front end",
+  "description": "Express API with GCP FireStore",
   "main": "app/index.js",
   "type": "module",
   "scripts": {

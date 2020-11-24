@@ -1,7 +1,7 @@
 import express from 'express';
-import errorMiddleware from './routes/middleware/error.middleware';
 import { healthRouter } from './routes/api/health.controller';
 import { menuRouter } from './routes/api/menu.controller';
+import errorMiddleware from './routes/middleware/error.middleware';
 
 export const app = () => {
     const expressApi = express();
@@ -9,7 +9,9 @@ export const app = () => {
 
     // Middleware
     expressApi.use(express.json());
-    expressApi.use(errorMiddleware);
+    expressApi.use((err, req, res, next) =>
+        errorMiddleware(err, req, res, next)
+    );
 
     // Controllers
     expressApi.use(baseApiRoute, healthRouter);
