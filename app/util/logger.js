@@ -1,5 +1,5 @@
-import winston from 'winston';
-import gcWinston from '@google-cloud/logging-winston';
+const winston = require('winston');
+const gcWinston = require('@google-cloud/logging-winston');
 
 const { KEY_FILE, GOOGLE_CLOUD_PROJECT } = process.env;
 
@@ -23,4 +23,6 @@ const logger = winston.createLogger({
         loggingWinston,
     ],
 });
-export default logger;
+module.exports = {
+    logger,
+};

@@ -1,5 +1,5 @@
-import firestore from '@google-cloud/firestore';
-import logger from '../util/logger';
+const firestore = require('@google-cloud/firestore');
+const { logger } = require('../util/logger');
 
 const { KEY_FILE, GOOGLE_CLOUD_PROJECT } = process.env;
 
@@ -28,4 +28,4 @@ const getMenuByTenantId = async tenantId => {
         logger.warn('No menu exists for Tenant');
     }
 };
-export { saveMenu, getMenuByTenantId };
+module.exports = { saveMenu, getMenuByTenantId };

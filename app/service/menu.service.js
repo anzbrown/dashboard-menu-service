@@ -1,4 +1,4 @@
-import { saveMenu, getMenuByTenantId } from '../repository/fireStore';
+const { saveMenu, getMenuByTenantId } = require('../repository/fireStore');
 
 /**
  * sort the menu list by priority attribute, save into Firestore DB
@@ -19,4 +19,4 @@ const updateMenu = async (menus, tenantId) => {
  */
 const getMenu = async tenantId => await getMenuByTenantId(tenantId);
 
-export { updateMenu, getMenu };
+module.exports = { updateMenu, getMenu };

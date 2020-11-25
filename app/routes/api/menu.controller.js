@@ -1,15 +1,18 @@
-import express from 'express';
-import { getMenu, updateMenu } from '../../service/menu.service';
+const express = require('express');
+const { getMenu, updateMenu } = require('../../service/menu.service');
 
-export const menuRouter = express.Router();
+const menuRouter = express.Router();
 const menuPath = '/menu';
 
 menuRouter.get(menuPath, async (request, response) => {
-    const menus = await getMenu(request.headers['x-tenant-id']);
+    const menus = await getMenu(request.tenantId);
     response.send(menus);
 });
 menuRouter.post(menuPath, async (request, response) => {
     const menuItems = request.body;
-    await updateMenu(menuItems, request.headers['x-tenant-id']);
+    await updateMenu(menuItems, request.tenantId);
     response.send(menuItems);
 });
+module.exports = {
+    menuRouter,
+};

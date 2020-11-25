@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Express API with GCP FireStore",
   "main": "app/index.js",
-  "type": "module",
   "scripts": {
     "lint": "eslint --fix .",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node app/index.js",
-    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app/index.js"
+    "test": "jest",
+    "start": "node app/index.js",
+    "dev": "nodemon app/index.js"
   },
   "author": "Adam Brown",
   "license": "",
@@ -37,7 +36,6 @@
   },
   "jest": {
     "collectCoverage": true,
-    "transform": {},
     "coverageReporters": [
       "html",
       "lcov"

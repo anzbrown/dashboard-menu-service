@@ -1,5 +1,5 @@
-import { app } from './app';
-import logger from './util/logger';
+const { app } = require('./app');
+const { logger } = require('./util/logger');
 
 const port = process.env.PORT || 8080;
 const application = app();

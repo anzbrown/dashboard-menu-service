@@ -1,5 +1,6 @@
-import { describe, expect, jest, test } from '@jest/globals';
-import { updateMenu } from '../../app/service/menu.service';
+const { describe, expect, test } = require('@jest/globals');
+const { updateMenu } = require('../../app/service/menu.service');
+const fireStore =  require('../../app/repository/fireStore');
 
 jest.mock('../../app/repository/fireStore');
 
@@ -74,7 +75,11 @@ describe('updateMenu', () => {
     ];
     const tenant = 'test';
     test('should sort menus by priority and save into FireStore', async () => {
+        jest.spyOn(fireStore, 'saveMenu').mockImplementation(
+            () => expectedMenu
+        );
         const result = await updateMenu(testMenu, tenant);
+        expect(fireStore.saveMenu).toHaveBeenCalledTimes(1);
         expect(result).toEqual(expectedMenu);
     });
 });
