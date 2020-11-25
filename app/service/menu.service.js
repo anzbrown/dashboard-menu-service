@@ -17,6 +17,7 @@ const updateMenu = async (menus, tenantId) => {
  * @param tenantId to use as the key to retrieve from Firestore
  * @returns menu list for tenant
  */
-const getMenu = async tenantId => await getMenuByTenantId(tenantId);
+const getMenu = async tenantId =>
+    Object.values(await getMenuByTenantId(tenantId));
 
 module.exports = { updateMenu, getMenu };
