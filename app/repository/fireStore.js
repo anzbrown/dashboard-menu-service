@@ -13,13 +13,12 @@ const firestoreOptions =
 
 const COLLECTION = 'menus';
 const fireStoreDb = new firestore.Firestore(firestoreOptions);
-export const fireStore = {};
-fireStore.updateMenu = async (menu, tenantId) => {
+const saveMenu = async (menu, tenantId) => {
     logger.debug(menu);
     const menusRef = fireStoreDb.collection(COLLECTION).doc(tenantId);
     await menusRef.set(Object.assign({}, menu));
 };
-fireStore.getMenu = async tenantId => {
+const getMenuByTenantId = async tenantId => {
     logger.debug(tenantId);
     const menusRef = fireStoreDb.collection(COLLECTION).doc(tenantId);
     const doc = await menusRef.get();
@@ -29,3 +28,4 @@ fireStore.getMenu = async tenantId => {
         logger.warn('No menu exists for Tenant');
     }
 };
+export { saveMenu, getMenuByTenantId };

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint --fix .",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "start": "node --experimental-modules --es-module-specifier-resolution=node app/index.js",
     "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node app/index.js"
   },
@@ -19,17 +20,27 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2",
+    "@jest/globals": "^26.6.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.8.1",
-    "prettier": "^2.1.1",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4"
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.2",
+    "prettier": "^2.1.1"
   },
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
     "singleQuote": true,
     "arrowParens": "avoid"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "transform": {},
+    "coverageReporters": [
+      "html",
+      "lcov"
+    ]
   }
 }

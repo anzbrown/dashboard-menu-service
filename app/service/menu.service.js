@@ -1,4 +1,4 @@
-import { fireStore } from '../repository/fireStore';
+import { saveMenu, getMenuByTenantId } from '../repository/fireStore';
 
 /**
  * sort the menu list by priority attribute, save into Firestore DB
@@ -8,7 +8,7 @@ import { fireStore } from '../repository/fireStore';
  */
 const updateMenu = async (menus, tenantId) => {
     menus.sort((itemA, itemB) => itemA.priority - itemB.priority);
-    await fireStore.updateMenu(menus, tenantId);
+    await saveMenu(menus, tenantId);
     return menus;
 };
 
@@ -17,6 +17,6 @@ const updateMenu = async (menus, tenantId) => {
  * @param tenantId to use as the key to retrieve from Firestore
  * @returns menu list for tenant
  */
-const getMenu = async tenantId => await fireStore.getMenu(tenantId);
+const getMenu = async tenantId => await getMenuByTenantId(tenantId);
 
 export { updateMenu, getMenu };
