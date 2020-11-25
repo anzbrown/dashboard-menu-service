@@ -1,0 +1,2 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/anzbrown/dashboard-menu-service/Node.js%20CI)
+[![codecov](https://codecov.io/gh/anzbrown/dashboard-menu-service/branch/main/graph/badge.svg?token=42IW0U0HLT)](https://codecov.io/gh/anzbrown/dashboard-menu-service)
