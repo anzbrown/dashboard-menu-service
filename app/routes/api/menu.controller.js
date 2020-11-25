@@ -4,9 +4,13 @@ const { getMenu, updateMenu } = require('../../service/menu.service');
 const menuRouter = express.Router();
 const menuPath = '/menu';
 
-menuRouter.get(menuPath, async (request, response) => {
-    const menus = await getMenu(request.tenantId);
-    response.send(menus);
+menuRouter.get(menuPath, async (request, response, next) => {
+    try {
+        const menus = await getMenu(request.tenantId);
+        response.send(menus);
+    } catch (error) {
+        next(error);
+    }
 });
 menuRouter.post(menuPath, async (request, response) => {
     const menuItems = request.body;

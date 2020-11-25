@@ -22,10 +22,6 @@ const getMenuByTenantId = async tenantId => {
     logger.debug(tenantId);
     const menusRef = fireStoreDb.collection(COLLECTION).doc(tenantId);
     const doc = await menusRef.get();
-    if (doc.exists) {
-        return doc.data();
-    } else {
-        logger.warn('No menu exists for Tenant');
-    }
+    return doc.data();
 };
 module.exports = { saveMenu, getMenuByTenantId };
