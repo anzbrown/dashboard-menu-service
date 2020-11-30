@@ -1,6 +1,2 @@
 runtime: nodejs12
 env: standard
-handlers:
-  - url: /api
-    http_headers:
-      Access-Control-Allow-Origin: http:localhost:3000
