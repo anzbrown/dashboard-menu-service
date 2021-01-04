@@ -14,8 +14,12 @@
   "dependencies": {
     "@google-cloud/firestore": "^4.2.0",
     "@google-cloud/logging-winston": "^4.0.0",
+    "cors": "^2.8.5",
     "envalid": "^6.0.1",
     "express": "^4.17.1",
+    "express-brute": "^1.0.1",
+    "helmet": "^4.3.1",
+    "joi": "^17.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

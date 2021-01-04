@@ -12,10 +12,14 @@ menuRouter.get(menuPath, async (request, response, next) => {
         next(error);
     }
 });
-menuRouter.post(menuPath, async (request, response) => {
-    const menuItems = request.body;
-    await updateMenu(menuItems, request.tenantId);
-    response.send(menuItems);
+menuRouter.post(menuPath, async (request, response, next) => {
+    try {
+        const menuItems = request.body;
+        await updateMenu(menuItems, request.tenantId);
+        response.send(menuItems);
+    } catch (error) {
+        next(error);
+    }
 });
 module.exports = {
     menuRouter,

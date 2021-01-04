@@ -1,3 +1,4 @@
+const { validateMenu } = require('../util/validators');
 const { saveMenu, getMenuByTenantId } = require('../repository/fireStore');
 
 /**
@@ -7,9 +8,16 @@ const { saveMenu, getMenuByTenantId } = require('../repository/fireStore');
  * @returns sorted menu list
  */
 const updateMenu = async (menus, tenantId) => {
-    menus.sort((itemA, itemB) => itemA.priority - itemB.priority);
-    await saveMenu(menus, tenantId);
-    return menus;
+    try {
+        await validateMenu(menus);
+        menus.sort((itemA, itemB) => itemA.priority - itemB.priority);
+        await saveMenu(menus, tenantId);
+        return menus;
+    } catch (err) {
+        const error = new Error(err.message);
+        error.status = 400;
+        throw error;
+    }
 };
 
 /**
