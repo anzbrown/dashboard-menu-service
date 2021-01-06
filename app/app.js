@@ -8,7 +8,7 @@ const { errorHandler } = require('./routes/middleware/error.handler');
 
 const app = () => {
     const corsOptions = {
-        origin: 'https://snowflake-client-dot-dashboard-menu-service.ew.r.appspot.com/',
+        origin: 'https://snowflake-client-dot-dashboard-menu-service.ew.r.appspot.com',
         optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
     };
 
