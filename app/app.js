@@ -1,32 +1,26 @@
 const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
+const compression = require('compression');
+const { errorHandler } = require('./routes/middleware/error.handler');
+const { helm, corsOptions } = require('./routes/middleware/security.settings');
 const { healthRouter } = require('./routes/api/health.controller');
 const { menuRouter } = require('./routes/api/menu.controller');
-const { tenantParser } = require('./routes/middleware/tenant.parser');
-const { errorHandler } = require('./routes/middleware/error.handler');
+const { authRouter } = require('./routes/api/auth.controller');
 
 const app = () => {
-    const corsOptions = {
-        origin: 'https://snowflake-client-dot-dashboard-menu-service.ew.r.appspot.com',
-        optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-    };
-
     const expressApi = express();
     const baseApiRoute = '/api';
 
     // enable CORS for testing
-    expressApi.use(cors(corsOptions));
-    // enable HTTP security headers using helmet lib
-    expressApi.use(helmet());
-
-    // Middleware
+    expressApi.use(helm);
+    expressApi.use(corsOptions);
+    // expressApi.use(sessionOptions);
     expressApi.use(express.json());
-    expressApi.use(tenantParser);
+    expressApi.use(compression());
 
     // Controllers
     expressApi.use(baseApiRoute, healthRouter);
     expressApi.use(baseApiRoute, menuRouter);
+    expressApi.use(baseApiRoute, authRouter);
 
     // error handler
     expressApi.use((error, req, res, next) =>

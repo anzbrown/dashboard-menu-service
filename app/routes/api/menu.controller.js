@@ -1,22 +1,23 @@
 const express = require('express');
+const { tenantParser } = require('../middleware/tenant.parser');
 const { getMenu, updateMenu } = require('../../service/menu.service');
 
 const menuRouter = express.Router();
 const menuPath = '/menu';
 
-menuRouter.get(menuPath, async (request, response, next) => {
+menuRouter.get(menuPath, tenantParser, async (req, res, next) => {
     try {
-        const menus = await getMenu(request.tenantId);
-        response.send(menus);
+        const menus = await getMenu(req.tenantId);
+        res.send(menus);
     } catch (error) {
         next(error);
     }
 });
-menuRouter.post(menuPath, async (request, response, next) => {
+menuRouter.post(menuPath, tenantParser, async (req, res, next) => {
     try {
-        const menuItems = request.body;
-        await updateMenu(menuItems, request.tenantId);
-        response.send(menuItems);
+        const menuItems = req.body;
+        await updateMenu(menuItems, req.tenantId);
+        res.send(menuItems);
     } catch (error) {
         next(error);
     }

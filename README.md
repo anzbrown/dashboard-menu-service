@@ -6,4 +6,5 @@
 ## Todo:
 - Add rate limiting to prevent brute force attacks using [`express-brute`](https://www.npmjs.com/package/express-brute)
     - Setup to use a redis store for the IP Addresses to ban for 24 hours
-    
+- Use [`connect-redis`](https://www.npmjs.com/package/connect-redis) to store sessions in Redis using GCP memorystore to track and generate time limited sessions  
+- Harden security around the express app using [`helmet`](https://www.npmjs.com/package/helmet)
