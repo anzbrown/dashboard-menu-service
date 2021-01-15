@@ -29,7 +29,6 @@ const sessionOptions = session({
 const corsOptions = cors({
     origin: [
         'https://snowflake-client-dot-dashboard-menu-service.ew.r.appspot.com',
-        'localhost',
     ],
 });
 
