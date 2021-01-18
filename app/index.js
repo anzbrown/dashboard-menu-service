@@ -1,6 +1,11 @@
 const { app } = require('./app');
 const { logger } = require('./util/logger');
 
+// enable cloud debugging
+require('@google-cloud/debug-agent').start({
+    serviceContext: { enableCanary: true },
+});
+
 const port = process.env.PORT || 8080;
 const application = app();
 
