@@ -1,8 +1,8 @@
 const { describe, expect, test } = require('@jest/globals');
-const { updateMenu, getMenu } = require('../../app/service/menu.service');
-const fireStore = require('../../app/repository/fireStore');
+const { updateMenu, getMenu } = require('../../app/service/menuService');
+const menuRepository = require('../../app/repository/menuRepository');
 
-jest.mock('../../app/repository/fireStore');
+jest.mock('../../app/repository/menuRepository');
 
 const testMenu = [
     {
@@ -76,11 +76,11 @@ const tenant = 'test';
 
 describe('updateMenu', () => {
     test('should sort menus by priority and save into FireStore', async () => {
-        jest.spyOn(fireStore, 'saveMenu').mockImplementation(
+        jest.spyOn(menuRepository, 'saveMenu').mockImplementation(
             () => expectedMenu
         );
         const result = await updateMenu(testMenu, tenant);
-        expect(fireStore.saveMenu).toHaveBeenCalledTimes(1);
+        expect(menuRepository.saveMenu).toHaveBeenCalledTimes(1);
         expect(result).toEqual(expectedMenu);
     });
 });
@@ -121,7 +121,7 @@ describe('getMenu', () => {
         },
     };
     test('should retrieve menu by tenant Id', async () => {
-        jest.spyOn(fireStore, 'getMenuByTenantId').mockImplementation(
+        jest.spyOn(menuRepository, 'getMenuByTenantId').mockImplementation(
             () => fireStoredMenu
         );
         const result = await getMenu(tenant);
