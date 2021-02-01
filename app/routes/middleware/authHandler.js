@@ -2,10 +2,7 @@ const { firebaseApp } = require('../../config/firebase');
 
 const getAuthToken = (req, res, next) => {
     req.authToken = null;
-    if (
-        req.headers.authorization &&
-        req.headers.authorization.split(' ')[0] === 'Bearer'
-    ) {
+    if (req.headers?.authorization.split(' ')[0] === 'Bearer') {
         req.authToken = req.headers.authorization.split(' ')[1];
     }
     next();
