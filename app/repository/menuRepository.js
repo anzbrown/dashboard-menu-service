@@ -1,18 +1,7 @@
-const firestore = require('@google-cloud/firestore');
+const { fireStoreDb } = require('../config/firebase');
 const { logger } = require('../util/logger');
 
-const { KEY_FILE, GOOGLE_CLOUD_PROJECT } = process.env;
-
-const firestoreOptions =
-    process.env.NODE_ENV === 'production'
-        ? { projectId: GOOGLE_CLOUD_PROJECT }
-        : {
-              projectId: GOOGLE_CLOUD_PROJECT,
-              keyFilename: KEY_FILE,
-          };
-
 const COLLECTION = 'menus';
-const fireStoreDb = new firestore.Firestore(firestoreOptions);
 const saveMenu = async (menu, tenantId) => {
     logger.debug(menu);
     const menusRef = fireStoreDb.collection(COLLECTION).doc(tenantId);

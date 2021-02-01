@@ -1,5 +1,5 @@
 const { validateMenu } = require('../util/validators');
-const { saveMenu, getMenuByTenantId } = require('../repository/fireStore');
+const { saveMenu, getMenuByTenantId } = require('../repository/menuRepository');
 
 /**
  * sort the menu list by priority attribute, save into Firestore DB

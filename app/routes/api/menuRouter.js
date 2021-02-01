@@ -1,6 +1,6 @@
 const express = require('express');
-const { tenantParser } = require('../middleware/tenant.parser');
-const { getMenu, updateMenu } = require('../../service/menu.service');
+const { tenantParser } = require('../middleware/tenantParser');
+const { getMenu, updateMenu } = require('../../service/menuService');
 
 const menuRouter = express.Router();
 const menuPath = '/menu';
